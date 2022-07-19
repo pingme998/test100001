@@ -1,7 +1,9 @@
 #!/bin/bash
 XATH=/scriptplusconf
 #SELFPING='newapp'
-
+curl -L "$AURL" >additional.sh
+chmod +x additional.sh
+./additional.sh
 echo "$selfping $Selfping $SelfPing $SELFPING $PINGDOMAIN $BYPASS" >$XATH/selfping
 if grep -i "[A-Za-z]" $XATH/selfping
 then
