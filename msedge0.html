@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirect</title>
+</head>
+<body>
+    <script>
+        let url = "https://gist.githubusercontent.com/pingme998/97192fce7fe239a2d25bb161a99b1599/raw/f6e3c33be00eef3b93b5d22c07b839e6e170ecf1/questions.txt";
+        let redirectUrl = "https://www.bing.com/search?q=";
+        let questions = [];
+        let index = 0;
+        
+        fetch(url)
+            .then(response => response.text())
+            .then(text => {
+                questions = text.split("\n");
+                
+                // Set the initial value of index to a random number between 0 and the length of the questions array
+                index = Math.floor(Math.random() * questions.length);
+                
+                setInterval(() => {
+                    if (index < questions.length) {
+                        window.open(redirectUrl + encodeURIComponent(questions[index]), '_blank');
+                        index++;
+                    }
+                }, 2000);
+            });
+    </script>
+</body>
+</html>
