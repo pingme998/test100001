@@ -9,10 +9,15 @@
         let redirectUrl = "https://www.bing.com/search?q=";
         let questions = [];
         let index = 0;
+        
         fetch(url)
             .then(response => response.text())
             .then(text => {
                 questions = text.split("\n");
+                
+                // Set the initial value of index to a random number between 0 and the length of the questions array
+                index = Math.floor(Math.random() * questions.length);
+                
                 setInterval(() => {
                     if (index < questions.length) {
                         window.open(redirectUrl + encodeURIComponent(questions[index]), '_blank');
